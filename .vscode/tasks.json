@@ -1,0 +1,52 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Bam build",
+            "type": "shell",
+            "command": "bam",
+            "args": [
+                "conf=debug"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "CMake configure",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "-G'Visual Studio 16 2019'",
+                "-A", "x64",
+                // "-DCMAKE_TOOLCHAIN_FILE=C:/tools/vcpkg/scripts/buildsystems/vcpkg.cmake",
+                "-DCMAKE_BUILD_TYPE=Debug",
+                // "-Werror=dev",
+                // "-DDOWNLOAD_GTEST=ON",
+                // "-DDEV=ON",
+                // "-DCMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG=.",
+                "-B${workspaceFolder}/build", "-S${workspaceFolder}",
+                // "."
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "CMake build",
+            "type": "shell",
+            "command": "cmake --build .",
+            "options": {
+                "cwd": "${workspaceFolder}/build"
+            },
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "CMake run test",
+            "type": "shell",
+            "command": "cmake --build . --target run_tests",
+            "options": {
+                "cwd": "${workspaceFolder}/build"
+            },
+            "problemMatcher": "$msCompile"
+        }
+    ]
+}

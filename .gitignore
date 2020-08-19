@@ -40,7 +40,7 @@ versionsrv*
 .project
 .settings
 .vs
-.vscode
+# .vscode
 *.vcxproj
 *.vcxproj.filters
 compile_commands.json
