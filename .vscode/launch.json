@@ -5,7 +5,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Launch Teeworlds",
+            "name": "Win client",
             "type": "cppvsdbg",
             "request": "launch",
             "program": "${workspaceFolder}/build/Debug/teeworlds.exe",
@@ -14,7 +14,20 @@
             "cwd": "${workspaceFolder}/build",
             "environment": [],
             "externalConsole": false,
-            "preLaunchTask": "CMake build"
+            "preLaunchTask": "${defaultBuildTask}"
         },
+        {
+            "name": "Mac client",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/teeworlds",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}/build",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "lldb",
+            "preLaunchTask": "${defaultBuildTask}"
+        }
     ]
 }

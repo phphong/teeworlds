@@ -13,20 +13,27 @@
             "problemMatcher": "$msCompile"
         },
         {
-            "label": "CMake configure",
+            "label": "CMake configure win",
             "type": "shell",
             "command": "cmake",
             "args": [
                 "-G'Visual Studio 16 2019'",
-                "-A", "x64",
-                // "-DCMAKE_TOOLCHAIN_FILE=C:/tools/vcpkg/scripts/buildsystems/vcpkg.cmake",
+                "-A",
+                "x64",
                 "-DCMAKE_BUILD_TYPE=Debug",
-                // "-Werror=dev",
-                // "-DDOWNLOAD_GTEST=ON",
-                // "-DDEV=ON",
-                // "-DCMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG=.",
-                "-B${workspaceFolder}/build", "-S${workspaceFolder}",
-                // "."
+                "-B${workspaceFolder}/build",
+                "-S${workspaceFolder}"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "CMake configure mac",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "-DCMAKE_BUILD_TYPE=Debug",
+                "-B${workspaceFolder}/build",
+                "-S${workspaceFolder}"
             ],
             "problemMatcher": "$msCompile"
         },
@@ -37,7 +44,11 @@
             "options": {
                 "cwd": "${workspaceFolder}/build"
             },
-            "problemMatcher": "$msCompile"
+            "problemMatcher": "$msCompile",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
         },
         {
             "label": "CMake run test",
